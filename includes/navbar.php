@@ -17,7 +17,7 @@
       </ul>
       <li class="d-flex nav-item">
           <a class="nav-link disabled" href="#">Register</a>
-          <a class="nav-link" href="#">Log In</a>
+          <a class="nav-link" href="login.php">Log In</a>
       </li>
     </div>
   </div>

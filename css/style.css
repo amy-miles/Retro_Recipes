@@ -19,26 +19,24 @@ body {
     top: 0;
 }
 
-/* CSS for a sticky footer */
-html,
-body {
-    height: 100%;
-    margin: 0;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
+html, body {
+    height: 100%; /* Full height of the viewport */
+    margin: 0; /* Remove default margins */
+    display: flex; /* Enable flexbox layout */
+    flex-direction: column; /* Stack elements vertically */
 }
 
 .container {
-    flex: 1;    
+    flex: 1; /* Allow main content to take up remaining space */
 }
 
-footer {     
+footer {
     text-align: center;
     padding: 10px 0;
+    background-color: #eeb4d9; /* Optional: Background color */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
 }
+
 
 .custom-bg {
     background-color: #eeb4d9;
@@ -67,4 +65,15 @@ footer {
     background-color: white;
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+@font-face {
+    font-family: 'DinerFont'; /* Name for the font */
+    src: url('../assets/fonts/Fontdinerdotcom.ttf') format('truetype'); /* Path to your font file */
+  
+}
+
+/* Apply the font */
+.retro-header {
+    font-family: 'DinerFont'; /* Use the custom font */    
 }

@@ -29,7 +29,6 @@
             </div>
             <div class="col-lg-6">
                 <img src="assets/inline_logo.png" class="mx-lg-auto img-fluid" width="350" height="auto">
-
                 <h4 class="text-body-emphasis lh-1 mb-3">Family Recipes from the Olden Days</h4>
                 <p class="lead">Celery in jello? Raisins in meatloaf? </br>Share or browse the strange world of retro recipes. </p>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
@@ -42,11 +41,12 @@
 
     <!-- Recipe Content -->
     <div class="custom-background py-5">
-        <div class="container">
+        <div class="container d-flex justify-content-center">
             <!-- Content inside white div -->
             <div id="recipe_display_div" class="content-box p-4">
                 <!-- Content dynamically populated from the database -->
                 <h1>Dynamically populate the recipes here.</h1>
+                <p>This box adjusts its width dynamically to fit the content.</p>
             </div>
         </div>
     </div>

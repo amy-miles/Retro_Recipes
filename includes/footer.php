@@ -5,7 +5,6 @@
             document.getElementById('copyright').innerHTML = `&copy; ${currentYear} Retro Recipes`;
         });
 </script>
-
 <footer class="footer custom-bg text-white">
     <div class="container d-flex align-items-center justify-content-center position-relative">
         <!-- Copyright -->
