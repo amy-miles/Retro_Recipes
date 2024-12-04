@@ -1,0 +1,70 @@
+body {
+    background: url('../assets/scalloped_background.png') no-repeat center center;
+   
+    background-position: center -75px;
+   
+    background-size: cover;
+    
+    margin: 0;
+    padding: 20;
+    height: 100%;
+  
+}
+
+.navbar {
+    background-color: #eeb4d9;
+    z-index: 1000;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+/* CSS for a sticky footer */
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;    
+}
+
+footer {     
+    text-align: center;
+    padding: 10px 0;
+}
+
+.custom-bg {
+    background-color: #eeb4d9;
+    
+}
+
+/* Default link color */
+.navbar .nav-link {
+    color: #6C757D; /* Bootstrap's "secondary" grey */
+}
+
+/* Hover state */
+.navbar .nav-link:hover {
+    color: #343A40; /* Bootstrap's "dark" grey */
+}
+
+/* Background for the section */
+.custom-background {
+    background: url('../assets/cherry_background.png') no-repeat center center; /* Replace with your image */
+    background-size: cover;
+    background-color: #eeb4d9; /* Fallback color */
+}
+
+/* Content box styling */
+.content-box {
+    background-color: white;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
