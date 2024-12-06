@@ -13,7 +13,16 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">About This Project</a>
-        </li>            
+        </li>  
+        <li class="nav-item">
+          <a class="nav-link" href="#">All Recipes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Add a Recipe</a>
+        </li>  
+        <li class="nav-item">
+          <a class="nav-link" href="#">User Page</a>
+        </li>              
       </ul>
       <li class="d-flex nav-item">
           <a class="nav-link disabled" href="#">Register</a>

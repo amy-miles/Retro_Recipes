@@ -65,6 +65,11 @@ footer {
     background-color: white;
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px; /* Add padding to avoid content touching edges */
+    display: flex; /* Flex layout for content */
+    flex-wrap: wrap; /* Allow cards to wrap */
+    gap: 20px; /* Space between cards */
+    justify-content: center; /* Center align cards within the container */
 }
 
 @font-face {
@@ -76,4 +81,25 @@ footer {
 /* Apply the font */
 .retro-header {
     font-family: 'DinerFont'; /* Use the custom font */    
+}
+
+.details {
+    display: none; /* Ensure all details sections are hidden */
+}
+
+.recipe-image {
+    height: 150px; /* Adjust height as needed */
+    object-fit: cover; /* Maintain aspect ratio */
+    width: 100%; /* Ensure image fills the card */
+    background-color: #fff; /* Optional: Add white background for consistency */
+    border-bottom: 1px solid #ddd; /* Add a border to separate image from content */
+}
+
+
+.card {
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Prevent image/content overflow */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    width: 100%; /* Ensure cards take full column width in grid */
+    max-width: 300px; /* Optional: Constrain card size */
 }
