@@ -27,6 +27,16 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
     <link href="css/style.css" rel="stylesheet">
     <!-- Browser Icon -->
     <link rel="icon" href="assets/icon.png" type="image/png">
+
+    <!-- Delete recipe function -->
+    <script>
+        function confirmDelete(recipeId, recipeTitle) {
+            if (confirm(`Are you sure you want to delete the recipe "${recipeTitle}"? This action cannot be undone.`)) {
+                window.location.href = `deleteRecipe.php?recipe_id=${recipeId}`;
+            }
+        }
+    </script>
+
 </head>
 
 <body>
@@ -58,6 +68,7 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
     <div class="custom-background py-5">
         <div class="container d-flex justify-content-center">
             <!-- Content inside white div -->
+            <!-- <div id="message-container" class="alert" style="display: none;"></div> -->
             <div id="recipe_display_div" class="content-box p-4">
                 <?php
                 try {
@@ -99,6 +110,10 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
                                         <h5 class="card-title">' . $title . '</h5>
                                         <button class="btn btn-primary" onclick="toggleDetails(' . $recipeId . ')">View Recipe</button>
                                         
+                                         <!-- Delete Recipe Button -->
+                                        <button class="btn btn-danger mt-2" onclick="confirmDelete(' . $recipeId . ', \'' . $title . '\')">Delete Recipe</button>
+            
+
                                         <!-- Hidden details section -->
                                         <div class="details mt-3" id="details-' . $recipeId . '" style="display: none;">
                                             <h6>Ingredients:</h6>
@@ -128,7 +143,7 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
                 ?>
             </div>
         </div>
-    </div>
+     </div> <!--end recipe content -->
 
     <!-- Footer -->
     <?php include 'includes/footer.php'; ?>
