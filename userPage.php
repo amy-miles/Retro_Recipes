@@ -5,7 +5,7 @@ session_start();
 if (!isset($_SESSION['validSession']) || $_SESSION['validSession'] !== "yes") {
     // Redirect to login page
     header("Location: login.php");
-    exit; // Stop further script execution
+    exit; 
 }
 
 // Get the logged-in user's ID
@@ -49,18 +49,18 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
             <div class="col-10 col-sm-8 col-lg-6">
                 <img src="assets/hero_image.png" class="d-block mx-lg-auto mt-5 img-fluid" alt="Housewives Cooking" width="400" height="auto" loading="lazy">
             </div>
-            <div class="col-lg-6">
-                <p>
-                    <img src="assets/my_recipes_logo.png" class="mx-lg-auto img-fluid" width="350" height="auto">
-                </p>
+            <div class="col-lg-6 d-flex flex-column align-items-center text-center">
+    <p>
+        <img src="assets/my_recipes_logo.png" class="img-fluid" width="350" height="auto">
+    </p>
 
-                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <!-- <button type="button" class="btn btn-outline-secondary btn-lg px-4 me-md-2">View Recipes</button> -->
-                    <a href="AddRecipeForm.php" class="btn btn-outline-secondary btn-lg px-4">
-                        Add a Recipe
-                    </a>
-                </div>
-            </div>
+    <div class="d-grid gap-2">
+        <a href="AddRecipeForm.php" class="btn btn-outline-secondary btn-lg px-4">
+            Add a Recipe
+        </a>
+    </div>
+</div>
+
         </div>
     </div>
 
@@ -111,7 +111,7 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
                                         <button class="btn btn-primary" onclick="toggleDetails(' . $recipeId . ')">View Recipe</button>
                                         
                                          <!-- Delete Recipe Button -->
-                                        <button class="btn btn-danger mt-2" onclick="confirmDelete(' . $recipeId . ', \'' . $title . '\')">Delete Recipe</button>
+                                        <button class="btn btn-danger" onclick="confirmDelete(' . $recipeId . ', \'' . $title . '\')">Delete Recipe</button>
             
 
                                         <!-- Hidden details section -->
@@ -143,7 +143,7 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
                 ?>
             </div>
         </div>
-     </div> <!--end recipe content -->
+    </div> <!--end recipe content -->
 
     <!-- Footer -->
     <?php include 'includes/footer.php'; ?>
