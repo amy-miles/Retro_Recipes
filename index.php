@@ -34,8 +34,10 @@
                 <h4 class="text-body-emphasis lh-1 mb-3">Family Recipes from the Olden Days</h4>
                 <p class="lead">Celery in jello? Raisins in meatloaf? </br>Share or browse the strange world of retro recipes. </p>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <button type="button" class="btn btn-outline-secondary btn-lg px-4 me-md-2">View Recipes</button>
-                    <button type="button" class="btn btn-outline-secondary btn-lg px-4">Add a Recipe</button>
+                    <!-- <button type="button" class="btn btn-outline-secondary btn-lg px-4 me-md-2">View Recipes</button> -->
+                    <a href="login.php" class="btn btn-outline-secondary btn-lg px-4">
+    Add a Recipe
+</a>
                 </div>
             </div>
         </div>

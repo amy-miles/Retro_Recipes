@@ -60,17 +60,7 @@ footer {
     background-color: #eeb4d9; /* Fallback color */
 }
 
-/* Content box styling */
-.content-box {
-    background-color: white;
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    padding: 20px; /* Add padding to avoid content touching edges */
-    display: flex; /* Flex layout for content */
-    flex-wrap: wrap; /* Allow cards to wrap */
-    gap: 20px; /* Space between cards */
-    justify-content: center; /* Center align cards within the container */
-}
+
 
 @font-face {
     font-family: 'DinerFont'; /* Name for the font */
@@ -83,23 +73,31 @@ footer {
     font-family: 'DinerFont'; /* Use the custom font */    
 }
 
-.details {
-    display: none; /* Ensure all details sections are hidden */
+/* Content box styling */
+.content-box {
+    background-color: white;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px; /* Add padding to avoid content touching edges */    
+    flex-wrap: wrap; /* Allow cards to wrap */
+    gap: 20px; /* Space between cards */
+    justify-content: center; /* Center align cards within the container */
 }
 
+/* Recipe card image: make all images uniform */
 .recipe-image {
-    height: 150px; /* Adjust height as needed */
+    width: 100%;   
     object-fit: cover; /* Maintain aspect ratio */
-    width: 100%; /* Ensure image fills the card */
-    background-color: #fff; /* Optional: Add white background for consistency */
-    border-bottom: 1px solid #ddd; /* Add a border to separate image from content */
 }
-
-
 .card {
     border-radius: 10px; /* Rounded corners */
-    overflow: hidden; /* Prevent image/content overflow */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
-    width: 100%; /* Ensure cards take full column width in grid */
-    max-width: 300px; /* Optional: Constrain card size */
+    overflow: hidden; /* Prevent content overflow */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    width: 100%; /* Allow the card to fully utilize the grid column */
+    max-width: 100%; /* Prevent unnecessary constraints */
+    min-width: 250px; /* Ensure the card doesn't shrink below this width */
+
+    flex: 1 1 calc(25% - 20px); /* 4 cards per row, accounting for gaps */
 }
+
+
