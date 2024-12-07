@@ -100,4 +100,13 @@ footer {
     flex: 1 1 calc(25% - 20px); /* 4 cards per row, accounting for gaps */
 }
 
-
+.recipe-upload-container {
+    background-color: white; /* White background for the box */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 30px; /* Add padding inside the box */
+    width: 100%; /* Full width */
+    max-width: 600px; /* Limit the box width */
+    margin-top: 50px;
+    margin: 50px auto 0; /* Center the box */
+}

@@ -1,5 +1,5 @@
 <?php
-    require 'database/db_connect.php';
+require 'database/db_connect.php';
 ?>
 
 <!DOCTYPE html>
@@ -36,8 +36,8 @@
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                     <!-- <button type="button" class="btn btn-outline-secondary btn-lg px-4 me-md-2">View Recipes</button> -->
                     <a href="login.php" class="btn btn-outline-secondary btn-lg px-4">
-    Add a Recipe
-</a>
+                        Add a Recipe
+                    </a>
                 </div>
             </div>
         </div>

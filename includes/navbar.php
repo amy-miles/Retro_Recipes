@@ -13,19 +13,11 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">About This Project</a>
-        </li>  
-        <li class="nav-item">
-          <a class="nav-link" href="#">All Recipes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Add a Recipe</a>
-        </li>  
-        <li class="nav-item">
-          <a class="nav-link" href="#">User Page</a>
-        </li>              
+        </li>                     
       </ul>
       <li class="d-flex nav-item">
           <a class="nav-link disabled" href="#">Register</a>
+          <a class="nav-link" href="logout.php">Log Out</a>
           <a class="nav-link" href="login.php">Log In</a>
       </li>
     </div>

@@ -40,12 +40,15 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
                 <img src="assets/hero_image.png" class="d-block mx-lg-auto mt-5 img-fluid" alt="Housewives Cooking" width="400" height="auto" loading="lazy">
             </div>
             <div class="col-lg-6">
-                <h1 class="retro-header">My Recipes</h1>
-
+                <p>
+                    <img src="assets/my_recipes_logo.png" class="mx-lg-auto img-fluid" width="350" height="auto">
+                </p>
 
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <button type="button" class="btn btn-outline-secondary btn-lg px-4 me-md-2">View Recipes</button>
-                    <button type="button" class="btn btn-outline-secondary btn-lg px-4">Add a Recipe</button>
+                    <!-- <button type="button" class="btn btn-outline-secondary btn-lg px-4 me-md-2">View Recipes</button> -->
+                    <a href="AddRecipeForm.php" class="btn btn-outline-secondary btn-lg px-4">
+                        Add a Recipe
+                    </a>
                 </div>
             </div>
         </div>
