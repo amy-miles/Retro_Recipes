@@ -1,6 +1,7 @@
 <?php
 require 'database/db_connect.php';
 
+ini_set('session.cookie_lifetime', 0);
 session_start();
 if (!isset($_SESSION['validSession']) || $_SESSION['validSession'] !== "yes") {
     // Redirect to login page
@@ -122,7 +123,7 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
                                         <button class="btn btn-primary" onclick="toggleDetails(' . $recipeId . ')">View Recipe</button>
                                         
                                          <!-- Delete Recipe Button -->
-                                        <button class="btn btn-danger mt-2" onclick="confirmDelete(' . $recipeId . ', \'' . $title . '\')">Delete Recipe</button>
+                                        <button class="btn btn-danger" onclick="confirmDelete(' . $recipeId . ', \'' . $title . '\')">Delete Recipe</button>
             
 
                                         <!-- Hidden details section -->
