@@ -1,3 +1,8 @@
+<?php
+// Get the current page name
+$current_page = basename($_SERVER['PHP_SELF']);
+?>
+<?php echo "<!-- Current Page: $current_page -->"; ?>
 <nav class="navbar navbar-expand-lg ">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">
@@ -6,26 +11,25 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+          <a class="nav-link <?php echo ($current_page == 'index.php') ? 'active' : ''; ?>" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="userPage.php">My Recipes</a>
+          <a class="nav-link <?php echo ($current_page == 'userPage.php') ? 'active' : ''; ?>" href="userPage.php">My Recipes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="contactForm.php">Contact Me</a>
+          <a class="nav-link <?php echo ($current_page == 'contactForm.php') ? 'active' : ''; ?>" href="contactForm.php">Contact Me</a>
         </li>
       </ul>
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" href="about.php">About This Academic Project</a>
+          <a class="nav-link <?php echo ($current_page == 'about.php') ? 'active' : ''; ?>" href="about.php">About This Academic Project</a>
         </li>
       </ul>
       <li class="d-flex nav-item">
         <a class="nav-link disabled" href="#">Register</a>
-        <a class="nav-link" href="logout.php">Log Out</a>
-        <a class="nav-link" href="login.php">Log In</a>
+        <a class="nav-link <?php echo ($current_page == 'logout.php') ? 'active' : ''; ?>" href="logout.php">Log Out</a>
+        <a class="nav-link <?php echo ($current_page == 'login.php') ? 'active' : ''; ?>" href="login.php">Log In</a>
       </li>
-
     </div>
   </div>
 </nav>

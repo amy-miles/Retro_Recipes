@@ -48,6 +48,11 @@ footer {
     color: #343A40; 
 }
 
+.navbar .nav-link.active {
+    color: hotpink !important; 
+    font-weight: bold; 
+}
+
 /* Background for the section */
 .custom-background {
     background: url('../assets/cherry_background.png') no-repeat center center; 
