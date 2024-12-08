@@ -17,6 +17,10 @@ require 'database/db_connect.php';
     <link href="css/style.css" rel="stylesheet">
     <!-- Browser Icon -->
     <link rel="icon" href="assets/icon.png" type="image/png">
+
+    <!-- Logic for 'Servings' adjustments and functionality -->
+    <script src="js/fractionHelper.js"></script>
+    <script src="js/recipeAdjustments.js"></script>
 </head>
 
 <body>
@@ -89,10 +93,13 @@ require 'database/db_connect.php';
                                             Difficulty: ' . $difficulty . '
                                         </p>
                                         <p class="text-muted mb-2" style="font-size: 0.9em;">
-                                            Servings: ' . $servings . '
+                                            Servings: <span id="servings-' . $recipeId . '">' . $servings . '</span>
+                                            <a href="javascript:void(0);" onclick="adjustRecipe(' . $recipeId . ', 0.5)" class="small text-primary float-end ms-2">1/2x</a>
+                                            <a href="javascript:void(0);" onclick="adjustRecipe(' . $recipeId . ', 2)" class="small text-primary float-end ms-2">2x</a>
+                                            <a href="javascript:void(0);" onclick="resetRecipe(' . $recipeId . ')" class="small text-danger float-end ms-2">Reset</a>
                                         </p>
 
-                                        <button class="btn btn-primary" onclick="toggleDetails(' . $recipeId . ')">View Recipe</button>
+                                        <button class="btn btn-success btn-sm" onclick="toggleDetails(' . $recipeId . ')">View Recipe</button>
                                         
                                         <!-- Hidden details section -->
                                         <div class="details mt-3" id="details-' . $recipeId . '" style="display: none;">

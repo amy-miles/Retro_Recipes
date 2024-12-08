@@ -7,7 +7,7 @@ $_SESSION = []; // Clear session variables
 session_unset(); // Unset session variables
 session_destroy(); // Destroy the session on the server
 
-// Remove the session cookie from the browser
+// Remove the session cookie from the browser via ChatGPT
 if (ini_get("session.use_cookies")) {
     $params = session_get_cookie_params();
     setcookie(
@@ -21,7 +21,7 @@ if (ini_get("session.use_cookies")) {
     );
 }
 
-// Disconnect from the database (optional, for good practice)
+// Disconnect from the database
 $conn = null;
 
 // Redirect to the home page

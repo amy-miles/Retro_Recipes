@@ -29,6 +29,10 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
     <!-- Browser Icon -->
     <link rel="icon" href="assets/icon.png" type="image/png">
 
+    <!-- Logic for 'Servings' adjustments and functionality -->
+    <script src="js/fractionHelper.js"></script>
+    <script src="js/recipeAdjustments.js"></script>
+
     <!-- Delete recipe function -->
     <script>
         function confirmDelete(recipeId, recipeTitle) {
@@ -117,14 +121,26 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
                                             Difficulty: ' . $difficulty . '
                                         </p>
                                         <p class="text-muted mb-2" style="font-size: 0.9em;">
-                                            Servings: ' . $servings . '
+                                            Servings: <span id="servings-' . $recipeId . '">' . $servings . '</span>
+                                            <a href="javascript:void(0);" onclick="adjustRecipe(' . $recipeId . ', 0.5)" class="small text-primary float-end ms-2">1/2x</a>
+                                            <a href="javascript:void(0);" onclick="adjustRecipe(' . $recipeId . ', 2)" class="small text-primary float-end ms-2">2x</a>
+                                            <a href="javascript:void(0);" onclick="resetRecipe(' . $recipeId . ')" class="small text-danger float-end ms-2">Reset</a>
                                         </p>
 
-                                        <button class="btn btn-primary" onclick="toggleDetails(' . $recipeId . ')">View Recipe</button>
-                                        
-                                         <!-- Delete Recipe Button -->
-                                        <button class="btn btn-danger" onclick="confirmDelete(' . $recipeId . ', \'' . $title . '\')">Delete Recipe</button>
-            
+
+                                    <div class="d-flex flex-column gap-2">
+                                        <!-- View Recipe Button -->
+                                        <button class="btn btn-success btn-sm" onclick="toggleDetails(' . $recipeId . ')">View Recipe</button>
+
+                                         <!-- Update Recipe Button -->
+                                        <a href="updateRecipeForm.php?recipe_id=' . $recipeId . '" class="btn btn-primary btn-sm disabled">Update Recipe</a>
+                                         
+                                        <!-- Delete Recipe Button -->
+                                        <button class="btn btn-danger btn-sm" onclick="confirmDelete(' . $recipeId . ', \'' . $title . '\')">Delete Recipe</button>
+
+                                       
+                            
+                                        </div>
 
                                         <!-- Hidden details section -->
                                         <div class="details mt-3" id="details-' . $recipeId . '" style="display: none;">
@@ -133,7 +149,7 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
                             foreach ($ingredients as $ingredient) {
                                 echo '<li>' . htmlspecialchars($ingredient['amount']) . ' ' . htmlspecialchars($ingredient['unit']) . ' ' . htmlspecialchars($ingredient['name']) . '</li>';
                             }
-                            echo '            </ul>
+                            echo '          </ul>
                                             <h6>Instructions:</h6>
                                             <ol>';
                             foreach ($instructions as $step) {
