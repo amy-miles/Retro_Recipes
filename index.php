@@ -64,7 +64,7 @@ require 'database/db_connect.php';
 
                     // Loop through each category
                     foreach ($groupedRecipes as $category => $recipes) {
-                        echo '<h2 class="mt-5">' . htmlspecialchars($category) . '</h2>';
+                        echo '<h2 class="mt-5 display-3 retro-header">' . htmlspecialchars($category) . '</h2>';
                         echo '<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">';
 
                         // Loop through recipes in the current category

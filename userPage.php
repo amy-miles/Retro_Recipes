@@ -93,7 +93,7 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
 
                     // Loop through each category
                     foreach ($groupedRecipes as $category => $recipes) {
-                        echo '<h2 class="mt-5">' . htmlspecialchars($category) . '</h2>';
+                        echo '<h2 class="mt-5 display-3 retro-header">' . htmlspecialchars($category) . '</h2>';
                         echo '<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">';
 
                         // Loop through recipes in the current category
@@ -123,7 +123,7 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
                                         <button class="btn btn-primary" onclick="toggleDetails(' . $recipeId . ')">View Recipe</button>
                                         
                                          <!-- Delete Recipe Button -->
-                                        <button class="btn btn-danger" onclick="confirmDelete(' . $recipeId . ', \'' . $title . '\')">Delete Recipe</button>
+                                        <button class="btn btn-danger mt-2" onclick="confirmDelete(' . $recipeId . ', \'' . $title . '\')">Delete Recipe</button>
             
 
                                         <!-- Hidden details section -->

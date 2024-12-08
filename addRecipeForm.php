@@ -7,6 +7,7 @@ if (!isset($_SESSION['validSession']) || $_SESSION['validSession'] !== "yes") {
     exit;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +31,7 @@ if (!isset($_SESSION['validSession']) || $_SESSION['validSession'] !== "yes") {
     <div class="custom-background py-5">
         <div class="container d-flex justify-content-center">
             <div class="recipe-upload-container shadow-lg p-5 bg-white rounded">
-                <h1 class="text-center mb-4">Add a Recipe</h1>
+                <h1 class="text-center mb-4 display-2 retro-header">Add a Recipe</h1>
                 <form action="uploadRecipe.php" method="POST" enctype="multipart/form-data">
 
                     <!-- Recipe Title -->

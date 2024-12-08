@@ -98,7 +98,7 @@ if ($validUser === true) {
             <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
                 <!-- Form Box -->
                 <div class="content-box p-4">
-                    <h1 class="text-center retro-header">Login Form</h1>
+                    <h1 class="text-center display-3 retro-header">Login Form</h1>
                     <form method="post" action="login.php" class="mt-3">
                         <!-- Error Message -->
                         <div class="loginErrorDiv text-danger text-center mb-3">
