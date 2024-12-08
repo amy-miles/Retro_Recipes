@@ -1,14 +1,10 @@
 body {
-    background: url('../assets/scalloped_background.png') no-repeat center center;
-   
-    background-position: center -75px;
-   
-    background-size: cover;
-    
+    background: url('../assets/scalloped_background.png') no-repeat center center;   
+    background-position: center -75px;   
+    background-size: cover;    
     margin: 0;
     padding: 20;
-    height: 100%;
-  
+    height: 100%;  
 }
 
 .navbar {
@@ -21,9 +17,9 @@ body {
 
 html, body {
     height: 100%; /* Full height of the viewport */
-    margin: 0; /* Remove default margins */
-    display: flex; /* Enable flexbox layout */
-    flex-direction: column; /* Stack elements vertically */
+    margin: 0; 
+    display: flex; 
+    flex-direction: column; 
 }
 
 .container {
@@ -33,10 +29,9 @@ html, body {
 footer {
     text-align: center;
     padding: 10px 0;
-    background-color: #eeb4d9; /* Optional: Background color */
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+    background-color: #eeb4d9; 
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); 
 }
-
 
 .custom-bg {
     background-color: #eeb4d9;
@@ -45,68 +40,66 @@ footer {
 
 /* Default link color */
 .navbar .nav-link {
-    color: #6C757D; /* Bootstrap's "secondary" grey */
+    color: #6C757D; 
 }
 
 /* Hover state */
 .navbar .nav-link:hover {
-    color: #343A40; /* Bootstrap's "dark" grey */
+    color: #343A40; 
 }
 
 /* Background for the section */
 .custom-background {
-    background: url('../assets/cherry_background.png') no-repeat center center; /* Replace with your image */
+    background: url('../assets/cherry_background.png') no-repeat center center; 
     background-size: cover;
     background-color: #eeb4d9; /* Fallback color */
 }
 
-
-
+/*Custom font for Headers*/
 @font-face {
-    font-family: 'DinerFont'; /* Name for the font */
-    src: url('../assets/fonts/Fontdinerdotcom.ttf') format('truetype'); /* Path to your font file */
-  
+    font-family: 'DinerFont'; 
+    src: url('../assets/fonts/Fontdinerdotcom.ttf') format('truetype');   
 }
 
-/* Apply the font */
+/* Class to apply the font */
 .retro-header {
-    font-family: 'DinerFont'; /* Use the custom font */    
+    font-family: 'DinerFont'; 
 }
 
 /* Content box styling */
 .content-box {
-    background-color: white;
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    padding: 20px; /* Add padding to avoid content touching edges */    
-    flex-wrap: wrap; /* Allow cards to wrap */
-    gap: 20px; /* Space between cards */
-    justify-content: center; /* Center align cards within the container */
+    background-color: #eeb4d9;
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    padding: 20px; 
+    flex-wrap: wrap; 
+    gap: 20px; 
+    justify-content: center; 
 }
 
 /* Recipe card image: make all images uniform */
 .recipe-image {
     width: 100%;   
-    object-fit: cover; /* Maintain aspect ratio */
+    object-fit: cover; 
 }
 .card {
-    border-radius: 10px; /* Rounded corners */
-    overflow: hidden; /* Prevent content overflow */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-    width: 100%; /* Allow the card to fully utilize the grid column */
-    max-width: 100%; /* Prevent unnecessary constraints */
-    min-width: 250px; /* Ensure the card doesn't shrink below this width */
+    border-radius: 10px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    width: 100%; 
+    max-width: 100%; 
+    min-width: 250px; 
 
     flex: 1 1 calc(25% - 20px); /* 4 cards per row, accounting for gaps */
 }
 
 .recipe-upload-container {
-    background-color: white; /* White background for the box */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    padding: 30px; /* Add padding inside the box */
-    width: 100%; /* Full width */
-    max-width: 600px; /* Limit the box width */
+    background-color: #eeb4d9; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    padding: 30px; 
+    width: 100%; 
+    max-width: 600px; 
     margin-top: 50px;
-    margin: 50px auto 0; /* Center the box */
+    margin: 50px auto 0; 
 }

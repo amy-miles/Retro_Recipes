@@ -5,7 +5,7 @@ session_start();
 if (!isset($_SESSION['validSession']) || $_SESSION['validSession'] !== "yes") {
     // Redirect to login page
     header("Location: login.php");
-    exit; 
+    exit;
 }
 
 // Get the logged-in user's ID
@@ -18,7 +18,7 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>My Recipes</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Bundle JS (with Popper) -->
@@ -50,16 +50,16 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
                 <img src="assets/hero_image.png" class="d-block mx-lg-auto mt-5 img-fluid" alt="Housewives Cooking" width="400" height="auto" loading="lazy">
             </div>
             <div class="col-lg-6 d-flex flex-column align-items-center text-center">
-    <p>
-        <img src="assets/my_recipes_logo.png" class="img-fluid" width="350" height="auto">
-    </p>
+                <p>
+                    <img src="assets/my_recipes_logo.png" class="img-fluid" width="350" height="auto">
+                </p>
 
-    <div class="d-grid gap-2">
-        <a href="AddRecipeForm.php" class="btn btn-outline-secondary btn-lg px-4">
-            Add a Recipe
-        </a>
-    </div>
-</div>
+                <div class="d-grid gap-2">
+                    <a href="AddRecipeForm.php" class="btn btn-outline-secondary btn-lg px-4">
+                        Add a Recipe
+                    </a>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -74,10 +74,11 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
                 try {
                     // Fetch all recipes grouped by category
                     // Fetch recipes for the logged-in user
-                    $stmt = $conn->prepare("SELECT recipe_id, title, category, image, ingredients, instructions 
-                         FROM recipes 
-                         WHERE user_id = :user_id 
-                         ORDER BY category, title");
+                    $stmt = $conn->prepare("SELECT recipe_id, title, category, image, ingredients, instructions, difficulty, servings 
+                    FROM recipes 
+                    WHERE user_id = :user_id 
+                    ORDER BY category, title");
+
 
                     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT); // Bind user_id as an integer
                     $stmt->execute();
@@ -101,6 +102,8 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
                             $image = htmlspecialchars($recipe['image']);
                             $ingredients = json_decode($recipe['ingredients'], true);
                             $instructions = json_decode($recipe['instructions'], true);
+                            $difficulty = ($recipe['difficulty']);
+                            $servings = $recipe['servings'];
 
                             echo '
                             <div class="col">
@@ -108,10 +111,18 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
                                     <img src="uploads/' . $image . '" class="card-img-top recipe-image" alt="' . $title . '">
                                     <div class="card-body">
                                         <h5 class="card-title">' . $title . '</h5>
+
+                                        <p class="text-muted mb-1" style="font-size: 0.9em;">
+                                            Difficulty: ' . $difficulty . '
+                                        </p>
+                                        <p class="text-muted mb-2" style="font-size: 0.9em;">
+                                            Servings: ' . $servings . '
+                                        </p>
+
                                         <button class="btn btn-primary" onclick="toggleDetails(' . $recipeId . ')">View Recipe</button>
                                         
                                          <!-- Delete Recipe Button -->
-                                        <button class="btn btn-danger" onclick="confirmDelete(' . $recipeId . ', \'' . $title . '\')">Delete Recipe</button>
+                                        <button class="btn btn-danger mt-2" onclick="confirmDelete(' . $recipeId . ', \'' . $title . '\')">Delete Recipe</button>
             
 
                                         <!-- Hidden details section -->

@@ -46,12 +46,13 @@ require 'database/db_connect.php';
     <!-- Recipe Content -->
     <div class="custom-background py-5">
         <div class="container d-flex justify-content-center">
-            <!-- Content inside white div -->
+            <!-- Content inside white div (tried to change to pink...troubleshoot later-->
             <div id="recipe_display_div" class="content-box p-4">
                 <?php
                 try {
                     // Fetch all recipes grouped by category
-                    $stmt = $conn->prepare("SELECT recipe_id, title, category, image, ingredients, instructions FROM recipes ORDER BY category, title");
+                    $stmt = $conn->prepare("SELECT recipe_id, title, category, image, ingredients, instructions, servings, difficulty FROM recipes ORDER BY category, title");
+
                     $stmt->execute();
                     $recipes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -73,6 +74,8 @@ require 'database/db_connect.php';
                             $image = htmlspecialchars($recipe['image']);
                             $ingredients = json_decode($recipe['ingredients'], true);
                             $instructions = json_decode($recipe['instructions'], true);
+                            $difficulty = ucfirst($recipe['difficulty']);//capitalizes first char
+                            $servings = $recipe['servings'];
 
                             echo '
                             <div class="col">
@@ -80,6 +83,15 @@ require 'database/db_connect.php';
                                     <img src="uploads/' . $image . '" class="card-img-top recipe-image" alt="' . $title . '">
                                     <div class="card-body">
                                         <h5 class="card-title">' . $title . '</h5>
+                                        
+                                        
+                                        <p class="text-muted mb-1" style="font-size: 0.9em;">
+                                            Difficulty: ' . $difficulty . '
+                                        </p>
+                                        <p class="text-muted mb-2" style="font-size: 0.9em;">
+                                            Servings: ' . $servings . '
+                                        </p>
+
                                         <button class="btn btn-primary" onclick="toggleDetails(' . $recipeId . ')">View Recipe</button>
                                         
                                         <!-- Hidden details section -->
@@ -87,15 +99,15 @@ require 'database/db_connect.php';
                                             <h6>Ingredients:</h6>
                                             <ul>';
                             foreach ($ingredients as $ingredient) {
-                                echo '<li>' . htmlspecialchars($ingredient['amount']) . ' ' . htmlspecialchars($ingredient['unit']) . ' ' . htmlspecialchars($ingredient['name']) . '</li>';
+                                echo '<li>' . $ingredient['amount'] . ' ' . $ingredient['unit'] . ' ' . $ingredient['name'] . '</li>';
                             }
-                            echo '            </ul>
+                            echo '        </ul>
                                             <h6>Instructions:</h6>
                                             <ol>';
                             foreach ($instructions as $step) {
-                                echo '<li>' . htmlspecialchars($step['instruction']) . '</li>';
+                                echo '<li>' . $step['instruction'] . '</li>';
                             }
-                            echo '            </ol>
+                            echo '        </ol>
                                             <button class="btn btn-secondary" onclick="toggleDetails(' . $recipeId . ')">Hide Recipe</button>
                                         </div>
                                     </div>

@@ -1,6 +1,6 @@
 <?php
 // Access to Database
-require 'database/db_connect.php'; 
+require 'database/db_connect.php';
 
 session_start();
 if (!isset($_SESSION['validSession']) || $_SESSION['validSession'] !== "yes") {
@@ -19,6 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data
     $title = $_POST['title'];
     $category = $_POST['category'];
+    $servings = $_POST['servings'];
+    $difficulty = $_POST['difficulty'];
     $amounts = $_POST['amount'];
     $units = $_POST['unit'];
     $names = $_POST['name'];
@@ -53,14 +55,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Prepare the SQL statement
     $stmt = $conn->prepare("
-        INSERT INTO recipes (user_id, category, title, instructions, ingredients, image, created_at, updated_at)
-        VALUES (:user_id, :category, :title, :instructions, :ingredients, :image, NOW(), NOW())
+    INSERT INTO recipes (user_id, category, title, servings, difficulty, instructions, ingredients, image, created_at, updated_at)
+    VALUES (:user_id, :category, :title, :servings, :difficulty, :instructions, :ingredients, :image, NOW(), NOW())
     ");
+
 
     // Bind parameters
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
     $stmt->bindParam(':category', $category, PDO::PARAM_STR);
     $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+    $stmt->bindParam(':servings', $servings, PDO::PARAM_INT);
+    $stmt->bindParam(':difficulty', $difficulty, PDO::PARAM_STR);
     $stmt->bindParam(':instructions', $instructionsJson, PDO::PARAM_STR);
     $stmt->bindParam(':ingredients', $ingredientsJson, PDO::PARAM_STR);
     $stmt->bindParam(':image', $imageName, PDO::PARAM_STR);
@@ -69,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->execute()) {
         echo "Recipe uploaded successfully!";
         header("Location: userPage.php");
-        exit; 
+        exit;
     } else {
         echo "Error: Unable to execute query.";
     }
@@ -78,12 +83,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1>Recipe Upload Page</h1>
 </body>
+
 </html>

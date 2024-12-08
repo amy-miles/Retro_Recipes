@@ -23,6 +23,7 @@
             <div class="recipe-upload-container shadow-lg p-5 bg-white rounded">
                 <h1 class="text-center mb-4">Add a Recipe</h1>
                 <form action="uploadRecipe.php" method="POST" enctype="multipart/form-data">
+
                     <!-- Recipe Title -->
                     <div class="mb-3">
                         <label for="title" class="form-label">Recipe Title:</label>
@@ -42,11 +43,30 @@
                         </select>
                     </div>
 
+                    <!-- Difficulty -->
+                    <div class="mb-3">
+                        <label for="difficulty" class="form-label">Difficulty:</label>
+                        <select name="difficulty" id="difficulty" class="form-select" required>
+                            <option value="default" selected>Select Difficulty</option>
+                            <option value="Easy">Easy</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Hard">Hard</option>
+                        </select>
+                    </div>
+
+
                     <!-- Recipe Image -->
                     <div class="mb-3">
                         <label for="image" class="form-label">Recipe Image:</label>
                         <input type="file" name="image" id="image" class="form-control">
                     </div>
+
+                    <!-- Servings -->
+                    <div class="mb-3">
+                        <label for="servings" class="form-label">Servings:</label>
+                        <input type="number" name="servings" id="servings" class="form-control" placeholder="Enter the number of servings" min="1" required>
+                    </div>
+
 
                     <!-- Ingredients -->
                     <h3>Ingredients</h3>
