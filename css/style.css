@@ -53,6 +53,10 @@ footer {
     font-weight: bold; 
 }
 
+.mt-navbar {
+    margin-top: 100px; /* Adjust based on your navbar height */
+}
+
 /* Background for the section */
 .custom-background {
     background: url('../assets/cherry_background.png') no-repeat center center; 
@@ -74,6 +78,17 @@ footer {
 /* Content box styling */
 .content-box {
     background-color: #eeb4d9;
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    padding: 20px; 
+    flex-wrap: wrap; 
+    gap: 20px; 
+    justify-content: center; 
+}
+
+/* Content box styling */
+.content-box-about {
+    background-color: white;
     border-radius: 8px; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     padding: 20px; 

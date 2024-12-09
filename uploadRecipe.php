@@ -2,7 +2,7 @@
 // Access to Database
 require 'database/db_connect.php';
 
-ini_set('session.cookie_lifetime', 0);//to destroy session cookie if browser is closed
+ini_set('session.cookie_lifetime', 0); //to destroy session cookie if browser is closed
 session_start();
 if (!isset($_SESSION['validSession']) || $_SESSION['validSession'] !== "yes") {
     // Redirect to login page
@@ -10,12 +10,14 @@ if (!isset($_SESSION['validSession']) || $_SESSION['validSession'] !== "yes") {
     exit; // Stop further script execution
 }
 
+
+
 // Get the logged-in user's ID
 $user_id = $_SESSION['user_id']; // Retrieve user_id from session
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve the logged-in user's ID from the session
-    $user_id = 2; //hard coded for testing ($_SESSION['user_id'])
+    $user_id = $_SESSION['user_id'];
 
     // Get form data
     $title = $_POST['title'];
@@ -28,13 +30,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $steps = $_POST['steps'];
     $image = $_FILES['image'];
 
-    // Process the uploaded image
-    $targetDir = "uploads/";
-    $imageName = basename($image['name']);
-    $targetFile = $targetDir . $imageName;
-    if (!move_uploaded_file($image['tmp_name'], $targetFile)) {
-        die("Failed to upload image.");
+    // Set the default image path
+    $defaultImagePath = 'uploads\default_recipe_image.jpg';
+    // Process the uploaded image or use the default image
+    $imagePath = $defaultImagePath; // Default to the default image
+    if (isset($image['name']) && $image['name'] !== '') {
+        $targetDir = "uploads/";
+        $imageName = basename($image['name']);
+        $targetFile = $targetDir . $imageName;
+        if (move_uploaded_file($image['tmp_name'], $targetFile)) {
+            $imagePath = $targetFile; // Use the uploaded image
+        } else {
+            die("Failed to upload image.");
+        }
     }
+
+    // Debugging: Check the resolved image path
+    var_dump($imagePath);
+    die(); // Stop further execution to inspect the output
 
     // Convert ingredients to JSON
     $ingredients = [];
@@ -69,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bindParam(':difficulty', $difficulty, PDO::PARAM_STR);
     $stmt->bindParam(':instructions', $instructionsJson, PDO::PARAM_STR);
     $stmt->bindParam(':ingredients', $ingredientsJson, PDO::PARAM_STR);
-    $stmt->bindParam(':image', $imageName, PDO::PARAM_STR);
+    $stmt->bindParam(':image', $imagePath, PDO::PARAM_STR);
 
     // Execute the statement
     if ($stmt->execute()) {
@@ -88,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Upload Recipe</title>
 </head>
 
 <body>

@@ -28,7 +28,7 @@ require 'database/db_connect.php';
     <!-- Navbar -->
     <?php include 'includes/navbar.php'; ?>
 
-    <div class="container col-xxl-8 px-4 py-5">
+    <div class="container col-xl-8 px-4 py-5">
         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
             <div class="col-10 col-sm-8 col-lg-6">
                 <img src="assets/hero_image.png" class="d-block mx-lg-auto mt-5 img-fluid" alt="Housewives Cooking" width="400" height="auto" loading="lazy">

@@ -21,6 +21,73 @@ if (!isset($_SESSION['validSession']) || $_SESSION['validSession'] !== "yes") {
     <link href="css/style.css" rel="stylesheet">
     <!-- Browser Icon -->
     <link rel="icon" href="assets/icon.png" type="image/png">
+    
+    <script>
+    function validateForm() {
+        let isValid = true;
+        let errorMessage = "";
+
+        // Reset previous error styles
+        document.querySelectorAll(".error").forEach(el => el.classList.remove("error"));
+
+        // Validate Title
+        const title = document.getElementById("title");
+        if (title.value.trim() === "") {
+            isValid = false;
+            errorMessage += "Title is required.\n";
+            title.classList.add("error");
+        }
+
+        // Validate Difficulty
+        const difficulty = document.getElementById("difficulty");
+        if (difficulty.value === "default") {
+            isValid = false;
+            errorMessage += "Please select a difficulty level.\n";
+            difficulty.classList.add("error");
+        }
+
+        // Validate Servings
+        const servings = document.getElementById("servings");
+        if (!servings.value || servings.value <= 0) {
+            isValid = false;
+            errorMessage += "Please enter a valid number for servings (greater than 0).\n";
+            servings.classList.add("error");
+        }
+
+        // Validate Ingredients
+        const ingredients = document.querySelectorAll("#ingredients-container .row");
+        if (ingredients.length === 0) {
+            isValid = false;
+            errorMessage += "At least one ingredient is required.\n";
+            document.getElementById("ingredients-container").classList.add("error");
+        }
+
+        // Validate Steps
+        const steps = document.querySelectorAll("#instructions-container textarea");
+        if (steps.length === 0 || steps[0].value.trim() === "") {
+            isValid = false;
+            errorMessage += "At least one instruction step is required.\n";
+            document.getElementById("instructions-container").classList.add("error");
+        }
+
+        // Show errors and prevent form submission
+        if (!isValid) {
+            alert(errorMessage);
+        }
+
+        return isValid;
+    }
+</script>
+<style>
+    .error {
+        border: 2px solid red;
+        background-color: #ffe6e6;
+    }
+</style>
+
+
+
+
 </head>
 
 <body>
@@ -32,7 +99,8 @@ if (!isset($_SESSION['validSession']) || $_SESSION['validSession'] !== "yes") {
         <div class="container d-flex justify-content-center">
             <div class="recipe-upload-container shadow-lg p-5 bg-white rounded">
                 <h1 class="text-center mb-4 display-2 retro-header">Add a Recipe</h1>
-                <form action="uploadRecipe.php" method="POST" enctype="multipart/form-data">
+                <form action="uploadRecipe.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+
 
                     <!-- Recipe Title -->
                     <div class="mb-3">
