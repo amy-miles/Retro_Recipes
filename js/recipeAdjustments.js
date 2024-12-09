@@ -1,4 +1,6 @@
-// Cache original recipe data
+// This handles the functionality of the adjustment of the servings
+
+// Store original recipe data for reset button
 const originalRecipes = {};
 
 // Fetch recipe data from the server on page load
@@ -20,13 +22,14 @@ document.addEventListener("DOMContentLoaded", function () {
             data.forEach(recipe => {
                 originalRecipes[recipe.recipe_id] = {
                     servings: recipe.servings,
-                    ingredients: JSON.parse(recipe.ingredients) // Assuming ingredients are stored as JSON in the DB
+                    ingredients: JSON.parse(recipe.ingredients) 
                 };
             });
         })
         .catch(error => console.error("Error fetching recipe data:", error));
 });
 
+//multiplies the serving by the factor selected (1/2x or 2x)
 function adjustRecipe(recipeId, factor) {
     const original = originalRecipes[recipeId];
     if (!original) {
@@ -52,6 +55,7 @@ function adjustRecipe(recipeId, factor) {
     });
 }
 
+//Resets the servings to original in the DB
 function resetRecipe(recipeId) {
     const original = originalRecipes[recipeId];
     if (!original) {
@@ -72,5 +76,5 @@ function resetRecipe(recipeId) {
         ingredientsList.appendChild(listItem);
     });
 
-    console.log(`Recipe ${recipeId} has been reset to original amounts.`);
+    //console.log(`Recipe ${recipeId} has been reset to original amounts.`);
 }

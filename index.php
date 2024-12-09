@@ -1,7 +1,8 @@
 <?php
 require 'database/db_connect.php';
 ?>
-
+<!-- Amy Miles 
+WDV 341 & WDV 321 Final Project -->
 <!DOCTYPE html>
 <html lang="en">
 

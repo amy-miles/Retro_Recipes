@@ -1,5 +1,5 @@
 <?php
-// Get the current page name
+// Get the current page name to set active link
 $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 <?php echo "<!-- Current Page: $current_page -->"; ?>

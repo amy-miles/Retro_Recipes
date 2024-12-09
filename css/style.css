@@ -6,7 +6,23 @@ body {
     padding: 20;
     height: 100%;  
 }
+html, body {/*Troubleshooting sticky navbar*/
+    height: 100%; /* Full height of the viewport */
+    margin: 0; 
+    display: flex; 
+    flex-direction: column; 
+}
+/* Allow main content to take up remaining space */
+.container {
+    flex: 1; 
+}
+/*Pink Background*/
+.custom-bg {
+    background-color: #eeb4d9;    
+}
 
+
+/******** Navbar Styles ********/
 .navbar {
     background-color: #eeb4d9;
     z-index: 1000;
@@ -14,68 +30,36 @@ body {
     width: 100%;
     top: 0;
 }
-
-html, body {
-    height: 100%; /* Full height of the viewport */
-    margin: 0; 
-    display: flex; 
-    flex-direction: column; 
-}
-
-.container {
-    flex: 1; /* Allow main content to take up remaining space */
-}
-
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background-color: #eeb4d9; 
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); 
-}
-
-.custom-bg {
-    background-color: #eeb4d9;
-    
-}
-
-/* Default link color */
 .navbar .nav-link {
     color: #6C757D; 
 }
-
-/* Hover state */
 .navbar .nav-link:hover {
     color: #343A40; 
 }
-
 .navbar .nav-link.active {
     color: hotpink !important; 
     font-weight: bold; 
 }
 
-.mt-navbar {
-    margin-top: 100px; /* Adjust based on your navbar height */
-}
 
-/* Background for the section */
-.custom-background {
-    background: url('../assets/cherry_background.png') no-repeat center center; 
-    background-size: cover;
-    background-color: #eeb4d9; /* Fallback color */
-}
-
-/*Custom font for Headers*/
+/******* Custom Font *******/
 @font-face {
     font-family: 'DinerFont'; 
     src: url('../assets/fonts/Fontdinerdotcom.ttf') format('truetype');   
 }
-
-/* Class to apply the font */
 .retro-header {
     font-family: 'DinerFont'; 
 }
 
-/* Content box styling */
+/* Cherry Background */
+.custom-background {
+    background: url('../assets/cherry_background.png') no-repeat center center; 
+    background-size: cover;
+    background-color: #eeb4d9; 
+}
+
+
+/* Content box (recipes) styling */
 .content-box {
     background-color: #eeb4d9;
     border-radius: 8px; 
@@ -86,7 +70,7 @@ footer {
     justify-content: center; 
 }
 
-/* Content box styling */
+/* Content box (about page) styling */
 .content-box-about {
     background-color: white;
     border-radius: 8px; 
@@ -97,7 +81,7 @@ footer {
     justify-content: center; 
 }
 
-/* Recipe card image: make all images uniform */
+/* Recipe card image: help make all images uniform */
 .recipe-image {
     width: 100%;   
     object-fit: cover; 
@@ -113,6 +97,7 @@ footer {
     flex: 1 1 calc(25% - 20px); /* 4 cards per row, accounting for gaps */
 }
 
+/******** Upload Form Styles ********/
 .recipe-upload-container {
     background-color: #eeb4d9; 
     border-radius: 8px; 
@@ -122,4 +107,12 @@ footer {
     max-width: 600px; 
     margin-top: 50px;
     margin: 50px auto 0; 
+}
+
+/******** Footer Styles ********/
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #eeb4d9; 
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); 
 }

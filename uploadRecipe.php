@@ -1,3 +1,8 @@
+<!-- Amy Miles 
+WDV 341 & WDV 321 Final Project -->
+
+<!-- This file redirects to the user's page after upload -->
+
 <?php
 // Access to Database
 require 'database/db_connect.php';
@@ -9,8 +14,6 @@ if (!isset($_SESSION['validSession']) || $_SESSION['validSession'] !== "yes") {
     header("Location: login.php");
     exit; // Stop further script execution
 }
-
-
 
 // Get the logged-in user's ID
 $user_id = $_SESSION['user_id']; // Retrieve user_id from session
@@ -31,23 +34,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $image = $_FILES['image'];
 
     // Set the default image path
-    $defaultImagePath = 'uploads\default_recipe_image.jpg';
+    $defaultImageName = 'default_recipe_image.jpg';
     // Process the uploaded image or use the default image
-    $imagePath = $defaultImagePath; // Default to the default image
+    $imageName = $defaultImageName; // Default to the default image
     if (isset($image['name']) && $image['name'] !== '') {
         $targetDir = "uploads/";
         $imageName = basename($image['name']);
         $targetFile = $targetDir . $imageName;
         if (move_uploaded_file($image['tmp_name'], $targetFile)) {
-            $imagePath = $targetFile; // Use the uploaded image
+            $imageName = $targetFile; // Use the uploaded image
         } else {
             die("Failed to upload image.");
         }
     }
-
-    // Debugging: Check the resolved image path
-    var_dump($imagePath);
-    die(); // Stop further execution to inspect the output
 
     // Convert ingredients to JSON
     $ingredients = [];

@@ -1,4 +1,5 @@
-
+<!-- Amy Miles 
+WDV 341 & WDV 321 Final Project -->
 <?php
 session_start(); // Start the session
 

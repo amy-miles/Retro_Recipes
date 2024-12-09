@@ -1,3 +1,6 @@
+<!-- Amy Miles 
+WDV 341 & WDV 321 Final Project -->
+
 <?php
 require 'database/db_connect.php';
 

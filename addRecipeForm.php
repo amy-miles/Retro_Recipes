@@ -7,7 +7,8 @@ if (!isset($_SESSION['validSession']) || $_SESSION['validSession'] !== "yes") {
     exit;
 }
 ?>
-
+<!-- Amy Miles 
+WDV 341 & WDV 321 Final Project -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +22,7 @@ if (!isset($_SESSION['validSession']) || $_SESSION['validSession'] !== "yes") {
     <link href="css/style.css" rel="stylesheet">
     <!-- Browser Icon -->
     <link rel="icon" href="assets/icon.png" type="image/png">
-    
+
     <script>
     function validateForm() {
         let isValid = true;

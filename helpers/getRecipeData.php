@@ -10,7 +10,8 @@ if (!isset($_SESSION['validSession']) || $_SESSION['validSession'] !== "yes") {
     exit;
 }
 
-$user_id = $_SESSION['user_id']; // Retrieve user ID from session
+// Retrieve user ID from session for userPage content
+$user_id = $_SESSION['user_id']; 
 
 try {
     // Query the database for the user's recipes

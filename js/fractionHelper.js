@@ -1,3 +1,6 @@
+//this file converts a decimal to a fraction for display
+
+
 const FractionHelper = {
     // Converts a decimal to a fraction string
     decimalToFraction(decimal) {

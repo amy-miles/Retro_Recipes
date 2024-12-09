@@ -1,3 +1,7 @@
+<!-- Amy Miles 
+WDV 341 & WDV 321 Final Project -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 
