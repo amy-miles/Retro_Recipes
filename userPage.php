@@ -1,7 +1,5 @@
-<!-- Amy Miles 
-WDV 341 & WDV 321 Final Project -->
-
 <?php
+// Access to Database
 require 'database/db_connect.php';
 
 ini_set('session.cookie_lifetime', 0);
@@ -75,98 +73,89 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
     <!-- Recipe Content -->
     <div class="custom-background py-5">
         <div class="container d-flex justify-content-center">
-            <!-- Content inside white div -->
-            <!-- <div id="message-container" class="alert" style="display: none;"></div> -->
             <div id="recipe_display_div" class="content-box p-4">
                 <?php
                 try {
                     // Fetch all recipes grouped by category
-                    // Fetch recipes for the logged-in user
                     $stmt = $conn->prepare("SELECT recipe_id, title, category, image, ingredients, instructions, difficulty, servings 
                     FROM recipes 
                     WHERE user_id = :user_id 
                     ORDER BY category, title");
 
-
-                    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT); // Bind user_id as an integer
+                    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
                     $stmt->execute();
                     $recipes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                    // Group recipes by category
-                    $groupedRecipes = [];
-                    foreach ($recipes as $recipe) {
-                        $groupedRecipes[$recipe['category']][] = $recipe;
-                    }
-
-                    // Loop through each category
-                    foreach ($groupedRecipes as $category => $recipes) {
-                        echo '<h2 class="mt-5 display-3 retro-header">' . htmlspecialchars($category) . '</h2>';
-                        echo '<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">';
-
-                        // Loop through recipes in the current category
+                    // Check if there are any recipes
+                    if (empty($recipes)) {
+                        // Display default message if no recipes
+                        echo '<div class="alert alert-info text-center">
+                                <h4>You don\'t have any recipes yet!</h4>
+                                <p>Start by adding your first recipe.</p>
+                                <a href="AddRecipeForm.php" class="btn btn-primary mt-3">Add Your First Recipe</a>
+                              </div>';
+                    } else {
+                        // Group recipes by category
+                        $groupedRecipes = [];
                         foreach ($recipes as $recipe) {
-                            $recipeId = $recipe['recipe_id'];
-                            $title = htmlspecialchars($recipe['title']);
-                            $image = htmlspecialchars($recipe['image']);
-                            $ingredients = json_decode($recipe['ingredients'], true);
-                            $instructions = json_decode($recipe['instructions'], true);
-                            $difficulty = ($recipe['difficulty']);
-                            $servings = $recipe['servings'];
-
-                            echo '
-                            <div class="col">
-                                <div class="card h-100">
-                                    <img src="uploads/' . $image . '" class="card-img-top recipe-image" alt="' . $title . '">
-                                    <div class="card-body">
-                                        <h5 class="card-title">' . $title . '</h5>
-
-                                        <p class="text-muted mb-1" style="font-size: 0.9em;">
-                                            Difficulty: ' . $difficulty . '
-                                        </p>
-                                        <p class="text-muted mb-2" style="font-size: 0.9em;">
-                                            Servings: <span id="servings-' . $recipeId . '">' . $servings . '</span>
-                                            <a href="javascript:void(0);" onclick="adjustRecipe(' . $recipeId . ', 0.5)" class="small text-primary float-end ms-2">1/2x</a>
-                                            <a href="javascript:void(0);" onclick="adjustRecipe(' . $recipeId . ', 2)" class="small text-primary float-end ms-2">2x</a>
-                                            <a href="javascript:void(0);" onclick="resetRecipe(' . $recipeId . ')" class="small text-danger float-end ms-2">Reset</a>
-                                        </p>
-
-
-                                    <div class="d-flex flex-column gap-2">
-                                        <!-- View Recipe Button -->
-                                        <button class="btn btn-success btn-sm" onclick="toggleDetails(' . $recipeId . ')">View Recipe</button>
-
-                                         <!-- Update Recipe Button -->
-                                        <a href="updateRecipeForm.php?recipe_id=' . $recipeId . '" class="btn btn-primary btn-sm disabled">Update Recipe</a>
-                                         
-                                        <!-- Delete Recipe Button -->
-                                        <button class="btn btn-danger btn-sm" onclick="confirmDelete(' . $recipeId . ', \'' . $title . '\')">Delete Recipe</button>
-
-                                       
-                            
-                                        </div>
-
-                                        <!-- Hidden details section -->
-                                        <div class="details mt-3" id="details-' . $recipeId . '" style="display: none;">
-                                            <h6>Ingredients:</h6>
-                                            <ul>';
-                            foreach ($ingredients as $ingredient) {
-                                echo '<li>' . htmlspecialchars($ingredient['amount']) . ' ' . htmlspecialchars($ingredient['unit']) . ' ' . htmlspecialchars($ingredient['name']) . '</li>';
-                            }
-                            echo '          </ul>
-                                            <h6>Instructions:</h6>
-                                            <ol>';
-                            foreach ($instructions as $step) {
-                                echo '<li>' . htmlspecialchars($step['instruction']) . '</li>';
-                            }
-                            echo '            </ol>
-                                            <button class="btn btn-secondary" onclick="toggleDetails(' . $recipeId . ')">Hide Recipe</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>';
+                            $groupedRecipes[$recipe['category']][] = $recipe;
                         }
 
-                        echo '</div>';
+                        // Loop through each category
+                        foreach ($groupedRecipes as $category => $recipes) {
+                            echo '<h2 class="mt-5 display-3 retro-header">' . htmlspecialchars($category) . '</h2>';
+                            echo '<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">';
+
+                            // Loop through recipes in the current category
+                            foreach ($recipes as $recipe) {
+                                $recipeId = $recipe['recipe_id'];
+                                $title = htmlspecialchars($recipe['title']);
+                                $image = htmlspecialchars($recipe['image']);
+                                $ingredients = json_decode($recipe['ingredients'], true);
+                                $instructions = json_decode($recipe['instructions'], true);
+                                $difficulty = $recipe['difficulty'];
+                                $servings = $recipe['servings'];
+
+                                echo '
+                                <div class="col">
+                                    <div class="card h-100">
+                                        <img src="uploads/' . $image . '" class="card-img-top recipe-image" alt="' . $title . '">
+                                        <div class="card-body">
+                                            <h5 class="card-title">' . $title . '</h5>
+                                            <p class="text-muted mb-1" style="font-size: 0.9em;">Difficulty: ' . $difficulty . '</p>
+                                            <p class="text-muted mb-2" style="font-size: 0.9em;">
+                                                Servings: <span id="servings-' . $recipeId . '">' . $servings . '</span>
+                                                <a href="javascript:void(0);" onclick="adjustRecipe(' . $recipeId . ', 0.5)" class="small text-primary float-end ms-2">1/2x</a>
+                                                <a href="javascript:void(0);" onclick="adjustRecipe(' . $recipeId . ', 2)" class="small text-primary float-end ms-2">2x</a>
+                                                <a href="javascript:void(0);" onclick="resetRecipe(' . $recipeId . ')" class="small text-danger float-end ms-2">Reset</a>
+                                            </p>
+                                            <div class="d-flex flex-column gap-2">
+                                                <button class="btn btn-success btn-sm" onclick="toggleDetails(' . $recipeId . ')">View Recipe</button>
+                                                <a href="updateRecipeForm.php?recipe_id=' . $recipeId . '" class="btn btn-primary btn-sm disabled">Update Recipe</a>
+                                                <button class="btn btn-danger btn-sm" onclick="confirmDelete(' . $recipeId . ', \'' . $title . '\')">Delete Recipe</button>
+                                            </div>
+                                            <div class="details mt-3" id="details-' . $recipeId . '" style="display: none;">
+                                                <h6>Ingredients:</h6>
+                                                <ul>';
+                                foreach ($ingredients as $ingredient) {
+                                    echo '<li>' . htmlspecialchars($ingredient['amount']) . ' ' . htmlspecialchars($ingredient['unit']) . ' ' . htmlspecialchars($ingredient['name']) . '</li>';
+                                }
+                                echo '</ul>
+                                                <h6>Instructions:</h6>
+                                                <ol>';
+                                foreach ($instructions as $step) {
+                                    echo '<li>' . htmlspecialchars($step['instruction']) . '</li>';
+                                }
+                                echo '</ol>
+                                                <button class="btn btn-secondary" onclick="toggleDetails(' . $recipeId . ')">Hide Recipe</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>';
+                            }
+
+                            echo '</div>';
+                        }
                     }
                 } catch (PDOException $e) {
                     echo '<p>Error fetching recipes: ' . $e->getMessage() . '</p>';
