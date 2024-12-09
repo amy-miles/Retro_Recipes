@@ -1,26 +1,14 @@
 <?php
 require '../database/db_connect.php';
 
-session_start();
-
-// Check if the user is authenticated
-if (!isset($_SESSION['validSession']) || $_SESSION['validSession'] !== "yes") {
-    http_response_code(403); // Forbidden
-    echo json_encode(["error" => "Unauthorized access"]);
-    exit;
-}
-
-// Retrieve user ID from session for userPage content
-$user_id = $_SESSION['user_id']; 
 
 try {
     // Query the database for the user's recipes
     $stmt = $conn->prepare("
         SELECT recipe_id, servings, ingredients
         FROM recipes
-        WHERE user_id = :user_id
     ");
-    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    
     $stmt->execute();
 
     $recipes = $stmt->fetchAll(PDO::FETCH_ASSOC);

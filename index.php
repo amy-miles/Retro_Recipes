@@ -22,6 +22,7 @@ WDV 341 & WDV 321 Final Project -->
     <!-- Logic for 'Servings' adjustments and functionality -->
     <script src="js/fractionHelper.js"></script>
     <script src="js/recipeAdjustments.js"></script>
+ 
 </head>
 
 <body>
@@ -81,10 +82,10 @@ WDV 341 & WDV 321 Final Project -->
                                         <h5 class="card-title">' . $title . '</h5>
                                         <p class="text-muted mb-1" style="font-size: 0.9em;">Difficulty: ' . $difficulty . '</p>
                                         <p class="text-muted mb-2" style="font-size: 0.9em;">
-                                            Servings: <span id="servings-' . $recipeId . '">' . $servings . '</span>
-                                            <a href="javascript:void(0);" onclick="adjustRecipe(' . $recipeId . ', 0.5)" class="small text-primary float-end ms-2">1/2x</a>
-                                            <a href="javascript:void(0);" onclick="adjustRecipe(' . $recipeId . ', 2)" class="small text-primary float-end ms-2">2x</a>
-                                            <a href="javascript:void(0);" onclick="resetRecipe(' . $recipeId . ')" class="small text-danger float-end ms-2">Reset</a>
+                                                Servings: <span id="servings-' . $recipeId . '">' . $servings . '</span>
+                                                <a href="javascript:void(0);" onclick="adjustRecipe(' . $recipeId . ', 0.5)" class="small text-primary float-end ms-2">1/2x</a>
+                                                <a href="javascript:void(0);" onclick="adjustRecipe(' . $recipeId . ', 2)" class="small text-primary float-end ms-2">2x</a>
+                                                <a href="javascript:void(0);" onclick="resetRecipe(' . $recipeId . ')" class="small text-danger float-end ms-2">Reset</a>
                                         </p>
                                         <button class="btn btn-success btn-sm" onclick="toggleDetails(' . $recipeId . ')">View Recipe</button>
                                         <div class="details mt-3" id="details-' . $recipeId . '" style="display: none;">

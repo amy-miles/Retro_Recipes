@@ -1,5 +1,5 @@
 // This handles the functionality of the adjustment of the servings
-
+//console.log("recipeAdjustments.js loaded");debugging
 // Store original recipe data for reset button
 const originalRecipes = {};
 
