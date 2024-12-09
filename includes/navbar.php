@@ -3,11 +3,15 @@
 $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 <?php echo "<!-- Current Page: $current_page -->"; ?>
-<nav class="navbar navbar-expand-lg ">
+<nav class="navbar navbar-expand-lg navbar-light ">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">
       <img src="assets/inline_logo.png" alt="Logo" width="auto" height="30">
-    </a>  
+    </a>
+    <!-- Add the toggle button for collapsing the navbar -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
