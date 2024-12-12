@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // Populate the original recipes cache
+            // Populate the original recipe servings data cache
             data.forEach(recipe => {
                 originalRecipes[recipe.recipe_id] = {
                     servings: recipe.servings,
@@ -55,7 +55,7 @@ function adjustRecipe(recipeId, factor) {
     });
 }
 
-//Resets the servings to original in the DB
+// Resets recipe values to original stored in the JSON object
 function resetRecipe(recipeId) {
     const original = originalRecipes[recipeId];
     if (!original) {
