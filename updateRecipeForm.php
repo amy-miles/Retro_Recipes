@@ -30,7 +30,7 @@ try {
 
     $category = $recipeRecord["category"];
     $title = $recipeRecord["title"];
-    $instructionsArray = json_decode($recipeRecord["instructions"], true);
+    $instructionsArray = json_decode($recipeRecord["instructions"], true);//php objects
     $ingredientsArray = json_decode($recipeRecord["ingredients"], true);
     $image = $recipeRecord["image"];
     $servings = $recipeRecord["servings"];
