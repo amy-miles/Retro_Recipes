@@ -1,3 +1,30 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $firstName = $_POST['first_name'];
+    $user_username = $_POST['username'];
+    $user_password = $_POST['password'];
+
+    try {
+        require 'database/db_connect.php';
+
+        $sql = "INSERT INTO users (first_name, user_username, user_password) VALUES (:first_name, :username, :password)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':first_name', $firstName, PDO::PARAM_STR);
+        $stmt->bindParam(':username', $user_username, PDO::PARAM_STR);
+        $stmt->bindParam(':password', $user_password, PDO::PARAM_STR);
+
+        if ($stmt->execute()) {
+            header("Location: login.php");
+            exit;
+        } else {
+            $error = "Registration failed. Please try again.";
+        }
+    } catch (PDOException $e) {
+        $error = "Database error: " . $e->getMessage();
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,7 +96,7 @@
         </p>
         <p>
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" minlength="6" placeholder="Enter your password." required>
+            <input type="password" id="password" name="password" minlength="4" placeholder="Enter your password." required>
         </p>
         <p>
             <button type="submit" class="btn btn-primary">Register</button>

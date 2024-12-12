@@ -12,6 +12,7 @@ if (!isset($_SESSION['validSession']) || $_SESSION['validSession'] !== "yes") {
 
 // Get the logged-in user's ID
 $user_id = $_SESSION['user_id']; // Retrieve user_id from session
+$first_name= $_SESSION['first_name']; // Retrieve the first name of user
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +60,7 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
                 <p>
                     <img src="assets/my_recipes_logo.png" class="img-fluid" width="350" height="auto">
                 </p>
-
+                <?php echo '<h2 class="mt-5">Hello ' . $first_name . '!</h2>'; ?>
                 <div class="d-grid gap-2">
                     <a href="addRecipeForm.php" class="btn btn-outline-secondary btn-lg px-4">
                         Add a Recipe
