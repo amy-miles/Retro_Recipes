@@ -30,7 +30,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
         </li>
       </ul>
       <li class="d-flex nav-item">
-        <a class="nav-link disabled" href="#">Register</a>
+        <a class="nav-link" <?php echo ($current_page == 'register.php') ? 'active' : ''; ?>" href="register.php">Register</a>
         <a class="nav-link <?php echo ($current_page == 'logout.php') ? 'active' : ''; ?>" href="logout.php">Log Out</a>
         <a class="nav-link <?php echo ($current_page == 'login.php') ? 'active' : ''; ?>" href="login.php">Log In</a>
       </li>
