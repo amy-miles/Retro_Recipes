@@ -8,7 +8,8 @@ const FractionHelper = {
             return decimal.toString(); // It's a whole number
         }
 
-        const tolerance = 1e-6; // Precision tolerance
+        //finds the smallest denominator
+        const tolerance = 1e-6; // Precision tolerance to avoid infinite loops like .3333
         let denominator = 1;
         while (Math.abs(decimal * denominator - Math.round(decimal * denominator)) > tolerance) {
             denominator++;
@@ -21,8 +22,10 @@ const FractionHelper = {
         const reducedNumerator = numerator / divisor;
         const reducedDenominator = denominator / divisor;
 
+        
+        // Mixed fraction like 1 1/4
         if (reducedNumerator > reducedDenominator) {
-            // Mixed fraction (e.g., 1 1/4)
+            
             const whole = Math.floor(reducedNumerator / reducedDenominator);
             const remainder = reducedNumerator % reducedDenominator;
             return remainder > 0
