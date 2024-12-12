@@ -177,7 +177,7 @@ WDV 341 & WDV 321 Final Project -->
                         <!-- Display the current image -->
                         <div class="mt-2">
                             <p>Current image:</p>
-                            <img src="uploads/<?php echo htmlspecialchars($image); ?>" alt="Current Recipe Image" style="max-width: 200px; height: auto;">
+                            <img src="uploads/<?php echo $image; ?>" alt="Current Recipe Image" style="max-width: 200px; height: auto;">
                         </div>
                         <input type="hidden" name="existing_image" value="<?php echo $image; ?>">
                     </div>
@@ -226,7 +226,7 @@ WDV 341 & WDV 321 Final Project -->
                                 <div class="mb-2">
                                     <!-- Populate each instruction -->
                                     <textarea name="steps[]" class="form-control mb-2" rows="2" placeholder="Step <?php echo $instruction['step']; ?>">
-<?php echo htmlspecialchars($instruction['instruction']); ?>
+<?php echo $instruction['instruction']; ?>
 </textarea>
                                     <button type="button" class="btn btn-danger btn-sm" onclick="removeStep(this)">Remove</button>
                                 </div>
