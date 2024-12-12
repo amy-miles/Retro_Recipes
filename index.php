@@ -38,7 +38,7 @@ WDV 341 & WDV 321 Final Project -->
             <div class="col-lg-6">
                 <img src="assets/inline_logo.png" class="mx-lg-auto img-fluid" width="350" height="auto">
                 <h4 class="text-body-emphasis lh-1 mb-3">Family Recipes from the Olden Days</h4>
-                <p class="lead">Celery in jello? Raisins in meatloaf? <br>Share or browse the strange world of retro recipes.</p>
+                <p class="lead">Celery in jello? Raisins in meatloaf? Bring it on! <br>Share or browse these wonderful recipes.</p>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                     <a href="login.php" class="btn btn-outline-secondary btn-lg px-4">Add a Recipe</a>
                 </div>
@@ -69,8 +69,8 @@ WDV 341 & WDV 321 Final Project -->
                             $recipeId = $recipe['recipe_id'];
                             $title = $recipe['title'];
                             $image = $recipe['image'];
-                            $ingredients = json_decode($recipe['ingredients'], true);
-                            $instructions = json_decode($recipe['instructions'], true);
+                            $ingredients = json_decode($recipe['ingredients'], true);// Convert from JSON to PHP object
+                            $instructions = json_decode($recipe['instructions'], true);// Convert from JSON to PHP object
                             $difficulty = ucfirst($recipe['difficulty']);
                             $servings = $recipe['servings'];
 
@@ -91,6 +91,7 @@ WDV 341 & WDV 321 Final Project -->
                                         <div class="details mt-3" id="details-' . $recipeId . '" style="display: none;">
                                             <h6>Ingredients:</h6>
                                             <ul>';
+                            // loops through the php object 
                             foreach ($ingredients as $ingredient) {
                                 echo '<li>' . $ingredient['amount'] . ' ' . $ingredient['unit'] . ' ' . $ingredient['name'] . '</li>';
                             }
