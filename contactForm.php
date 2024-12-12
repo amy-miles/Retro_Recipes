@@ -44,7 +44,14 @@ WDV 341 & WDV 321 Final Project -->
         form .g-recaptcha,
         #button2 {
             padding: 5px;
-            border: 1px solid darkgrey;
+            border: 1px solid #ff69b4;
+            border-radius: 15px;
+        }
+
+        .btn-primary {
+            background-color: #ff69b4; /* Custom background color */
+            border-color: #ff69b4;    /* Custom border color */
+            color: white;             /* Custom text color */
             border-radius: 15px;
         }
     </style>
@@ -62,7 +69,7 @@ WDV 341 & WDV 321 Final Project -->
     <?php include 'includes/navbar.php'; ?>
 
     <form id="contactForm" name="contactForm" action="contactFormHandler.php" method="post">
-        <legend>Contact Me</legend>
+        <legend class="retro-header display-2">Contact Me</legend>
         <p>
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" placeholder="Enter your full name." required>
@@ -86,11 +93,11 @@ WDV 341 & WDV 321 Final Project -->
         </p>
 
         <p>
-            <button class="g-recaptcha"
+            <button class="g-recaptcha btn btn-primary"
                 data-sitekey="6LfWifcjAAAAAIeCLWDlTwM2iIWh1sR60ls9qZdO"
                 data-callback='onSubmit'
                 data-action='submit'>Submit</button>
-            <input type="reset" name="button2" id="button2" value="Reset" />
+            <input class="btn btn-outline-primary"  type="reset" name="button2" id="button2" value="Reset" />
         </p>
     </form>
 
