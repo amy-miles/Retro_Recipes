@@ -61,7 +61,7 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
                 </p>
 
                 <div class="d-grid gap-2">
-                    <a href="AddRecipeForm.php" class="btn btn-outline-secondary btn-lg px-4">
+                    <a href="addRecipeForm.php" class="btn btn-outline-secondary btn-lg px-4">
                         Add a Recipe
                     </a>
                 </div>
@@ -92,7 +92,7 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
                         echo '<div class="alert alert-info text-center">
                                 <h4>You don\'t have any recipes yet!</h4>
                                 <p>Start by adding your first recipe.</p>
-                                <a href="AddRecipeForm.php" class="btn btn-primary mt-3">Add Your First Recipe</a>
+                                <a href="addRecipeForm.php" class="btn btn-primary mt-3">Add Your First Recipe</a>
                               </div>';
                     } else {
                         // Group recipes by category
@@ -131,7 +131,7 @@ $user_id = $_SESSION['user_id']; // Retrieve user_id from session
                                             </p>
                                             <div class="d-flex flex-column gap-2">
                                                 <button class="btn btn-success btn-sm" onclick="toggleDetails(' . $recipeId . ')">View Recipe</button>
-                                                <a href="updateRecipeForm.php?recipe_id=' . $recipeId . '" class="btn btn-primary btn-sm disabled">Update Recipe</a>
+                                                <a href="updateRecipeForm.php?recipe_id=' . $recipeId . '" class="btn btn-primary btn-sm">Update Recipe</a>
                                                 <button class="btn btn-danger btn-sm" onclick="confirmDelete(' . $recipeId . ', \'' . $title . '\')">Delete Recipe</button>
                                             </div>
                                             <div class="details mt-3" id="details-' . $recipeId . '" style="display: none;">
